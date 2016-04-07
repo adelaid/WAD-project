@@ -1,1 +1,2 @@
 # WAD-project
+Descriere proiect :
