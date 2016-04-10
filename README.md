@@ -1,5 +1,5 @@
 # WAD-project
-Title: Pizza Delivery
+Title:Pizza Delivery
 Description: 
 Using our app a customer can order pizza;
 he can order an existing pizza or he can create his own;
