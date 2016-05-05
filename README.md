@@ -13,6 +13,7 @@ This is a project which consists in a pizza delivery website that requires a reg
 - 20 pizza/month- 700 gift points
 
     At 2500 gift points, the client can receive one of the following gifts: 
+    
 -	Free pizza for 8 days
 -	A T-shirt with our logo
 -	Two mugs with our logo
