@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    <servlet>
+        <servlet-name>RegistrationC</servlet-name>
+        <servlet-class>controller.RegistrationC</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>LoginC</servlet-name>
+        <servlet-class>controller.LoginC</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ReviewC</servlet-name>
+        <servlet-class>controller.ReviewC</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CheckAjaxC</servlet-name>
+        <servlet-class>controller.CheckAjaxC</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RegistrationC</servlet-name>
+        <url-pattern>/RegistrationC</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoginC</servlet-name>
+        <url-pattern>/LoginC</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ReviewC</servlet-name>
+        <url-pattern>/ReviewC</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CheckAjaxC</servlet-name>
+        <url-pattern>/CheckAjaxC</url-pattern>
+    </servlet-mapping>
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+    <welcome-file-list>
+        <welcome-file>RegistrationJSP.jsp</welcome-file>
+    </welcome-file-list>
+</web-app>
