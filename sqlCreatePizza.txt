@@ -1,0 +1,25 @@
+CREATE TABLE `users` (
+  `iduser` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `fname` varchar(255) NOT NULL,
+  `lname` varchar(255) NOT NULL,
+  `mail` varchar(255) NOT NULL,
+  `tel` varchar(255) NOT NULL,
+  `address` varchar(255) NOT NULL,
+  `gender` char(1) DEFAULT NULL,
+  `subscribe` tinyint(1) NOT NULL,
+  PRIMARY KEY (`iduser`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+
+
+
+CREATE TABLE `reviews` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(255) NOT NULL,
+  `dateR` varchar(255) NOT NULL,
+  `stars` int(11) NOT NULL,
+  `review` varchar(50000) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+
