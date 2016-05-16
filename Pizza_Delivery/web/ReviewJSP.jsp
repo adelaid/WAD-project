@@ -16,13 +16,41 @@
           <link rel="stylesheet" href="styleFunctional.css" type="text/css" />
         <link rel="stylesheet" href="style.css" type="text/css" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Review</title>
     </head>
     <body>
+        <nav>
+                <ul>
+                    <a href="indexJSP.jsp">Index</a>                    
+                    <a href="LoginJSP.jsp">Login</a>
+                    <a href="RegistrationJSP.jsp">Register</a>
+                    <a href="CreatePizzaJSP.jsp">Create Pizza!</a>
+                    <a href="ReviewJSP.jsp">Review</a>
+                    <a href="LogoutC">Log out!</a>
+
+                </ul>
+            </nav>
         <%
+            
         List<Review> reviews=ReviewDAOFactory.getReviewDAO().getProducts();
-        
+        boolean loggedIn=false;
+             if (request.getSession().getAttribute("user") != null) {
+            loggedIn = true;
+        }
+        else{
+            loggedIn=false;
+        }
+             
+
         %>
+        
+        
+
+  
+       
+  
+
+        
         <h1>Post here a comment !</h1>
         
         <form id="ratingsForm" method="post" action="ReviewC">
@@ -44,11 +72,12 @@ You can say something here..
 </div>
             
             
-            
+      
      <div class="form-element">
           <input type="submit" value="Submit">
           <input type="reset" value="Reset">
            </div>
+  
       </form>   
         
          <%if(!reviews.isEmpty()){

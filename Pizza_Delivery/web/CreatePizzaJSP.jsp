@@ -42,9 +42,12 @@
             --%>
             <nav>
                 <ul>
-                    <a href="index.jsp">Home</a>
+                    <a href="indexJSP.jsp">Index</a>                    
                     <a href="LoginJSP.jsp">Login</a>
-                    <a href="ProductViewJSP.jsp">View Products</a>
+                    <a href="RegistrationJSP.jsp">Register</a>
+                    <a href="CreatePizzaJSP.jsp">Create Pizza!</a>
+                    <a href="ReviewJSP.jsp">Review</a>
+                    <a href="LogoutC">Log out!</a>
 
                 </ul>
             </nav>

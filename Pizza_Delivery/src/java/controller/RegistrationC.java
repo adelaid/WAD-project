@@ -111,7 +111,7 @@ public class RegistrationC extends HttpServlet {
 
             UserDAOFactory.getUserDAO().createUser(username, password, fname, lname, email, telephone, address, gender, spam);
 
-            rd = request.getRequestDispatcher("index.jsp");
+            rd = request.getRequestDispatcher("indexJSP.jsp");
             rd.forward(request, response);
         }
 

@@ -26,14 +26,17 @@
                     <span class="header-text">COMPANY NAME</span>
                 </div>
                 --%>
-                <nav>
-                    <ul>
-                            <a href="index.jsp">Home</a>
-                            <a href="LoginJSP.jsp">Login</a>
-                            <a href="CreatePizzaJSP.jsp">Create Pizza</a>
+              <nav>
+                <ul>
+                    <a href="indexJSP.jsp">Index</a>                    
+                    <a href="LoginJSP.jsp">Login</a>
+                    <a href="RegistrationJSP.jsp">Register</a>
+                    <a href="CreatePizzaJSP.jsp">Create Pizza!</a>
+                    <a href="ReviewJSP.jsp">Review</a>
+                    <a href="LogoutC">Log out!</a>
 
-                        </ul>
-                </nav>
+                </ul>
+            </nav>
                     <h1>Registration form</h1>   
                     <form method="post" action="RegistrationC">
                         <div class="form-element">

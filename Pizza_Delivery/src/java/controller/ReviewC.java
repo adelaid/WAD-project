@@ -56,7 +56,8 @@ public class ReviewC extends HttpServlet {
         RequestDispatcher rd = request.getRequestDispatcher("ReviewJSP.jsp");
                  rd.forward(request, response);
         }else{
-         
+           RequestDispatcher rd = request.getRequestDispatcher("LoginJSP.jsp");
+                 rd.forward(request, response);
         }
         
     }

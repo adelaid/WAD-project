@@ -5,10 +5,8 @@
  */
 package controller;
 
-import dao.UserDAOFactory;
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -16,9 +14,9 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Adelaid
+ * @author Ada
  */
-public class LoginC extends HttpServlet {
+public class LogoutC extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,29 +29,9 @@ public class LoginC extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       String username=request.getParameter("uname");
-String password=request.getParameter("password");
-String type;
-if(UserDAOFactory.getUserDAO().isPasswordCorrect(username, password)){
-            // user exists
-            RequestDispatcher rd;
-         
-             
-            request.getSession().setAttribute("user", username);
-            rd = request.getRequestDispatcher("indexJSP.jsp");
-            rd.forward(request, response);
-             
-            
-        } else {
-            // does not exist
-            String error="User does not exist or password is incorrect";
-            request.setAttribute("LOGIN_ERROR", error);
-            RequestDispatcher rd = request.getRequestDispatcher("RegistrationJSP.jsp");
-            rd.forward(request, response);
-        }
-
-
-
+        response.setContentType("text/html;charset=UTF-8");
+         request.getSession().setAttribute("user", null);
+        request.getRequestDispatcher("indexJSP.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -29,16 +29,17 @@
                 
                 <span class="header-text">COMPANY NAME</span>
             </div>
-            <nav>
+           <nav>
                 <ul>
-                    <a href="index.jsp">Home</a>
-                    <a href="Registration.jsp">Register</a>
-                    <a href="Login.jsp">Login</a>
-                    <a href="Product.jsp">View Products</a>
-                    <a href="PurchaseController">History</a>
-                    <a href="ShoppingCart.jsp">Shopping Cart</a>
-                    <a href="LogoutController">Logout</a>
+                    <a href="indexJSP.jsp">Index</a>                    
+                    <a href="LoginJSP.jsp">Login</a>
+                    <a href="RegistrationJSP.jsp">Register</a>
+                    <a href="CreatePizzaJSP.jsp">Create Pizza!</a>
+                    <a href="ReviewJSP.jsp">Review</a>
+                    <a href="LogoutC">Log out!</a>
+
                 </ul>
+            </nav>
             </nav>
             <h1>Login form</h1>
             <form method="post" action="LoginC">
