@@ -23,3 +23,60 @@ CREATE TABLE `reviews` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
+
+CREATE TABLE `crust` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) NOT NULL,
+  `price` double NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `img` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+
+CREATE TABLE `ingredients` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) NOT NULL,
+  `type` varchar(45) NOT NULL,
+  `price` double NOT NULL,
+  `img` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+
+
+CREATE TABLE `pizza` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) NOT NULL,
+  `size` varchar(45) NOT NULL,
+  `crust` varchar(45) NOT NULL,
+  `sauce` varchar(45) NOT NULL,
+  `cheese` tinyint(1) NOT NULL,
+  `ingredient1` varchar(45) NOT NULL,
+  `ingredient2` varchar(45) NOT NULL,
+  `ingredient3` varchar(45) DEFAULT NULL,
+  `ingredient4` varchar(45) DEFAULT NULL,
+  `ingredient5` varchar(45) DEFAULT NULL,
+  `ingredient6` varchar(45) DEFAULT NULL,
+  `price` double NOT NULL,
+  `img` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+
+CREATE TABLE `sauce` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) NOT NULL,
+  `price` double NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `img` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+
+
+
+

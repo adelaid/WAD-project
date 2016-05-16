@@ -133,6 +133,12 @@ public class RegistrationC extends HttpServlet {
         processRequest(request, response);
     
     }
+    
+     @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
+    }
 
     /**
      * Returns a short description of the servlet.

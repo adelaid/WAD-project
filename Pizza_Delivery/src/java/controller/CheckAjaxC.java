@@ -12,6 +12,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import validation.ServerSideValidation;
 
 /**
  *
@@ -58,9 +59,7 @@ public class CheckAjaxC extends HttpServlet {
             throws ServletException, IOException {
         
         String username=request.getParameter("uname");
-        String password = request.getParameter("password");
-        String password2 = request.getParameter("rpassword");
-        
+       String crustName=request.getParameter("crust");
        response.setContentType("text/html;charset=UTF-8");
 PrintWriter out = response.getWriter();
 try 
@@ -72,7 +71,9 @@ try
             out.println("<font color=red><b>"+username+"</b> is already in use</font>");
             }
          
-            
+  if(true){
+  out.println("Da");
+  }          
      
            out.println();
     
@@ -83,6 +84,9 @@ try
         } finally {
             out.close();
         }
+
+
+
     }
 
     /**

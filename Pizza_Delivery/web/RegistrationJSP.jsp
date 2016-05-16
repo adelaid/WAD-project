@@ -11,6 +11,7 @@
             <head>
                  <link rel="stylesheet" href="styleFunctional.css" type="text/css"/>
         <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js "></script>
+        <script type="text/javascript" src="jquery.min.js"></script>
          <script type="text/javascript" src="ajaxRegister.js"></script>
                
                 <title>Registration</title>
@@ -29,7 +30,7 @@
                     <ul>
                             <a href="index.jsp">Home</a>
                             <a href="LoginJSP.jsp">Login</a>
-                            <a href="ProductViewJSP.jsp">View Products</a>
+                            <a href="CreatePizzaJSP.jsp">Create Pizza</a>
 
                         </ul>
                 </nav>
@@ -37,17 +38,17 @@
                     <form method="post" action="RegistrationC">
                         <div class="form-element">
                             <label for="username">Username</label>
-                            <input type="text" name="uname" id="uname" required class="uname">  <span class="status"></span> 
+                            <input type="text" name="uname" id="uname" required class="field">  <span class="status"></span> 
                         </div>
                         <br>
                         <div class="form-element">
                             <label for="password">Password</label>
-                            <input type="password" name="password" id="password" required>
+                            <input type="password" name="password" id="password" required class="field"> 
                         </div>
                         
                         <div class="form-element">
                             <label for="rPassword">Repeat password</label>
-                            <input type="password" id="rPassword" name="rpassword" required class="rpassword"> <span id='message'></span> 
+                            <input type="password" id="rpassword" name="rpassword" required class="field"> <span class='message'></span>
                         </div>
                         <div class="form-element">
                             <label for="first_name">First Name</label>

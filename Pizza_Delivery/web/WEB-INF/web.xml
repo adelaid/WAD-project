@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+ 
     <servlet>
         <servlet-name>RegistrationC</servlet-name>
         <servlet-class>controller.RegistrationC</servlet-class>
@@ -16,6 +17,14 @@
         <servlet-name>CheckAjaxC</servlet-name>
         <servlet-class>controller.CheckAjaxC</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ProductAjaxC</servlet-name>
+        <servlet-class>controller.ProductAjaxC</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>MakePizzaC</servlet-name>
+        <servlet-class>controller.MakePizzaC</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RegistrationC</servlet-name>
         <url-pattern>/RegistrationC</url-pattern>
@@ -31,6 +40,14 @@
     <servlet-mapping>
         <servlet-name>CheckAjaxC</servlet-name>
         <url-pattern>/CheckAjaxC</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProductAjaxC</servlet-name>
+        <url-pattern>/ProductAjaxC</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MakePizzaC</servlet-name>
+        <url-pattern>/MakePizzaC</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

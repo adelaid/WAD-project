@@ -6,7 +6,7 @@
 
 
  $(document).ready(function(){
-              $(".uname").change(function(){
+              $("#uname").change(function(){
                   var uname = $(this).val();
                  
                       $(".status").html("<font color=gray> Checking availability...</font>");
@@ -20,8 +20,45 @@
                       }); 
                      
               });
+              
+              
             
               
           });
+          
+    $(document).ready(function () {
+   $("#rpassword").keyup(checkPasswordMatch);
+   
+});
+
+function checkPasswordMatch() {
+    var password = $("#password").val();
+    var confirmPassword = $("#rpassword").val();
+
+    if (password != confirmPassword)
+        $(".message").html("Passwords do not match!");
+    else
+        $(".message").html("Passwords match.");
+    
+    
+    
+}
+
+  var name;
+     $("form").on("focusout", function(event){
+         $(".field").each(function(){
+             if($(this).val() === ""){
+                 name = $(this).attr('name');
+                 $("#"+name+" span").show();
+             }
+             else{
+                  name = $(this).attr('name');
+                 $("#"+name+" span").hide();
+             }
+         })
+         event.preventDefault();
+     })
+          
+
      
  

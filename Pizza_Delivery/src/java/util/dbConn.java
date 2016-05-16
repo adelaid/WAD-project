@@ -27,7 +27,7 @@ public class dbConn {
 //           String driver="com.mysql.jdbc.Driver";
 //           Class.forName(driver);
 //            connection = DriverManager.getConnection(url, user, password);
-//           connection.setAutoCommit(false);
+        
 //            }
           //  Context ctx;
                try{
