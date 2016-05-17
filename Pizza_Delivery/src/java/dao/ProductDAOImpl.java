@@ -16,7 +16,7 @@ import java.util.logging.Logger;
 import model.Crust;
 import model.Ingredient;
 import model.Pizza;
-import model.Product;
+
 import model.Sauce;
 
 /**
@@ -24,7 +24,7 @@ import model.Sauce;
  * @author Adelaid
  */
 public class ProductDAOImpl implements DAOProduct {
-   
+
     private static ProductDAOImpl instance;
 
     public static ProductDAOImpl getInstance() {
@@ -33,13 +33,61 @@ public class ProductDAOImpl implements DAOProduct {
         }
         return instance;
     }
-
+    
+    
+    
+    
+    
+    
+    
+      public List<Pizza> getPizza() {
+        Singleton inst = Singleton.getInstance();
+        Connection connection = inst.getCon();
+        List<Pizza> pizzas = new ArrayList<>();
+        try {
+            PreparedStatement prepStmt = connection.prepareStatement("select  * from pizza");
+            ResultSet rs = prepStmt.executeQuery();
+            while (rs.next()) {
+                boolean b=false;
+                if(rs.getInt(6)==1){
+                b=true;
+                }
+                else{
+                b=false;
+                }
+                pizzas.add(new Pizza(rs.getInt(1), rs.getString(2), rs.getString(3), getCrust(rs.getString(4)), getSauce(rs.getString(5)),b,rs.getDouble(7),rs.getString(8)));
+            }
+            prepStmt.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return pizzas;
+    }
+      public List<Ingredient> getIngredient(Pizza p){
+       Singleton inst = Singleton.getInstance();
+        Connection connection = inst.getCon();
+        List<Ingredient> ingredients = new ArrayList<Ingredient>();
+        try {
+            PreparedStatement prepStmt = connection.prepareStatement("select  * from pizza_ingredients where pizza_id=?");
+            prepStmt.setInt(1, p.getId());
+            ResultSet rs = prepStmt.executeQuery();
+            while (rs.next()) {
+                ingredients.add(getIngredient(rs.getInt(3)));
+            }
+            prepStmt.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return ingredients;
+      
+      }
+    
     
 
     @Override
-    public  List<Crust> getCrust() {
-     Singleton inst = Singleton.getInstance();
-    Connection connection = inst.getCon();
+    public List<Crust> getCrust() {
+        Singleton inst = Singleton.getInstance();
+        Connection connection = inst.getCon();
         List<Crust> crusts = new ArrayList<>();
         try {
             PreparedStatement prepStmt = connection.prepareStatement("select  * from crust");
@@ -51,12 +99,12 @@ public class ProductDAOImpl implements DAOProduct {
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-        return crusts;    
+        return crusts;
     }
-    
-    public  List<Sauce> getSauce() {
-     Singleton inst = Singleton.getInstance();
-    Connection connection = inst.getCon();
+
+    public List<Sauce> getSauce() {
+        Singleton inst = Singleton.getInstance();
+        Connection connection = inst.getCon();
         List<Sauce> sauces = new ArrayList<>();
         try {
             PreparedStatement prepStmt = connection.prepareStatement("select  * from sauce");
@@ -68,109 +116,225 @@ public class ProductDAOImpl implements DAOProduct {
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-        return sauces;    
+        return sauces;
     }
-    
-    public  List<Ingredient> getIngredient(String type) {
-     Singleton inst = Singleton.getInstance();
-    Connection connection = inst.getCon();
+
+    public List<Ingredient> getIngredient(String type) {
+        Singleton inst = Singleton.getInstance();
+        Connection connection = inst.getCon();
         List<Ingredient> ingredients = new ArrayList<>();
         try {
             PreparedStatement prepStmt = connection.prepareStatement("select  * from ingredients where type=?");
-            
-            prepStmt.setString(1,type);
+
+            prepStmt.setString(1, type);
             ResultSet rs = prepStmt.executeQuery();
-            
-          //  con.commit();
+
+            //  con.commit();
             while (rs.next()) {
-                ingredients.add(new Ingredient(rs.getInt(1), rs.getString(2),rs.getString(3), rs.getDouble(4),  rs.getString(5)));
+                ingredients.add(new Ingredient(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDouble(4), rs.getString(5)));
             }
             prepStmt.close();
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-        return ingredients;    
+        return ingredients;
     }
-    
-    
-   
-    
-    public Ingredient getIngredient(int id){
-     Singleton inst = Singleton.getInstance();
-    Connection connection = inst.getCon();
-    Ingredient i=null;
-     try {
+
+    public Ingredient getIngredient(int id) {
+        Singleton inst = Singleton.getInstance();
+        Connection connection = inst.getCon();
+        Ingredient i = null;
+        try {
             PreparedStatement prepStmt = connection.prepareStatement("select  * from ingredients where id=?");
-            
-            prepStmt.setInt(1,id);
+
+            prepStmt.setInt(1, id);
             ResultSet rs = prepStmt.executeQuery();
             while (rs.next()) {
-                 i=new Ingredient(rs.getInt(1), rs.getString(2),rs.getString(3), rs.getDouble(4),  rs.getString(5));
-                 return i;
+                i = new Ingredient(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDouble(4), rs.getString(5));
+                return i;
             }
             prepStmt.close();
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-      return i;
+        return i;
     }
-    
-     public Crust getCrust(int id){
-     Singleton inst = Singleton.getInstance();
-    Connection connection = inst.getCon();
-    Crust c=null;
-     try {
+
+    public Crust getCrust(int id) {
+        Singleton inst = Singleton.getInstance();
+        Connection connection = inst.getCon();
+        Crust c = null;
+        try {
             PreparedStatement prepStmt = connection.prepareStatement("select  * from crust where id=?");
-            
-            prepStmt.setInt(1,id);
+
+            prepStmt.setInt(1, id);
             ResultSet rs = prepStmt.executeQuery();
             while (rs.next()) {
-                 c=new Crust(rs.getInt(1), rs.getString(2), rs.getDouble(3),  rs.getString(4),rs.getString(5));
-                 return c;
+                c = new Crust(rs.getInt(1), rs.getString(2), rs.getDouble(3), rs.getString(4), rs.getString(5));
+                return c;
             }
             prepStmt.close();
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-      return c;
+        return c;
     }
-public Sauce getSauce(int id){
-     Singleton inst = Singleton.getInstance();
-    Connection connection = inst.getCon();
-    Sauce s=null;
-     try {
-            PreparedStatement prepStmt = connection.prepareStatement("select  * from sauce where id=?");
-            
-            prepStmt.setInt(1,id);
+
+    public Sauce getSauce(int id) {
+        Singleton inst = Singleton.getInstance();
+        Connection connection = inst.getCon();
+        Sauce s = null;
+        try {
+            PreparedStatement prepStmt = connection.prepareStatement("select * from sauce where id=?");
+
+            prepStmt.setInt(1, id); 
             ResultSet rs = prepStmt.executeQuery();
             while (rs.next()) {
-                 s=new Sauce(rs.getInt(1), rs.getString(2), rs.getDouble(3),  rs.getString(4),rs.getString(5));
-                 return s;
+                s = new Sauce(rs.getInt(1), rs.getString(2), rs.getDouble(3), rs.getString(4), rs.getString(5));
+                return s;
             }
             prepStmt.close();
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-      return s;
+        return s;
     }
-//public boolean insertPizza(Pizza p){
-//Singleton inst = Singleton.getInstance();
-//    Connection connection = inst.getCon();
-//    Sauce s=null;
-//     try {
-//            PreparedStatement prepStmt = connection.prepareStatement("insert into pizza(`id`, `name`, `size`, `crust`, `sauce`, `cheese`, `ingredient1`, `ingredient2`, `ingredient3`,`ingredient4`,ingredient5`,ingredient6`, `price`,img) values(default,?,?,?,?,?,?,?,?,?,?,?,?,?)");
-//            
-//            prepStmt.setString(1, );
-//            ResultSet rs = prepStmt.executeQuery();
-//            while (rs.next()) {
-//                 s=new Sauce(rs.getInt(1), rs.getString(2), rs.getDouble(3),  rs.getString(4),rs.getString(5));
-//                 return s;
+
+    public ArrayList<Integer> getPizzaIds() {
+        Singleton inst = Singleton.getInstance();
+        Connection connection = inst.getCon();
+        ArrayList<Integer> ids = new ArrayList<Integer>();
+        try {
+            PreparedStatement prepStmt = connection.prepareStatement("select  id from pizza");
+
+            ResultSet rs = prepStmt.executeQuery();
+            while (rs.next()) {
+                ids.add(rs.getInt(1));
+
+            }
+            prepStmt.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return ids;
+    }
+
+    public boolean insertPizza(Pizza p) {
+        Singleton inst = Singleton.getInstance();
+        Connection connection = inst.getCon();
+        
+        try {
+            PreparedStatement prepStmt = connection.prepareStatement("insert into pizza values(default,?,?,?,?,?,?,?)");
+
+            prepStmt.setString(1, p.getName());
+            prepStmt.setString(2, p.getSize());
+            prepStmt.setString(3, p.getCrust().getName());
+            prepStmt.setString(4, p.getSauce().getName());
+//            if(p.isCheese()){
+//            prepStmt.setInt(5, 1);
 //            }
-//            prepStmt.close();
-//        } catch (SQLException ex) {
-//            ex.printStackTrace();
-//        }
-//      return s;
-//}
+//            else{
+//            prepStmt.setInt(5, 0);
+//            }
+            prepStmt.setInt(5, p.isCheese() ? 1 : 0);
+            prepStmt.setDouble(6, p.getPrice());
+            prepStmt.setString(7, p.getImage());
+           prepStmt.executeUpdate();
+            connection.commit();
+            return true;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return false;
+    }
     
+    public boolean insertIngredient(int pizzaId,int ingredientId){
+    Singleton inst = Singleton.getInstance();
+        Connection connection = inst.getCon();
+        
+        try {
+            PreparedStatement prepStmt = connection.prepareStatement("insert into pizza_ingredients values(default,?,?)");
+
+            prepStmt.setInt(1, pizzaId);
+            prepStmt.setInt(2, ingredientId);
+            
+           prepStmt.executeUpdate();
+            connection.commit();
+            return true;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return false;
+    
+    }
+
+    @Override
+    public Crust getCrust(String name) {
+    Singleton inst = Singleton.getInstance();
+        Connection connection = inst.getCon();
+        Crust c = null;
+        try {
+            PreparedStatement prepStmt = connection.prepareStatement("select  * from crust where name=?");
+
+            prepStmt.setString(1, name);
+            ResultSet rs = prepStmt.executeQuery();
+            while (rs.next()) {
+                c = new Crust(rs.getInt(1), rs.getString(2), rs.getDouble(3), rs.getString(4), rs.getString(5));
+                return c;
+            }
+            prepStmt.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return c;   
+    
+    }
+
+    @Override
+    public Sauce getSauce(String name) {
+      Singleton inst = Singleton.getInstance();
+        Connection connection = inst.getCon();
+        Sauce s = null;
+        try {
+            PreparedStatement prepStmt = connection.prepareStatement("select * from sauce where name=?");
+
+            prepStmt.setString(1, name); 
+            ResultSet rs = prepStmt.executeQuery();
+            while (rs.next()) {
+                s = new Sauce(rs.getInt(1), rs.getString(2), rs.getDouble(3), rs.getString(4), rs.getString(5));
+                return s;
+            }
+            prepStmt.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return s;    
+    
+    }
+
+    @Override
+    public Pizza getPizza(int id) {
+     Singleton inst = Singleton.getInstance();
+        Connection connection = inst.getCon();
+        Pizza p = null;
+        try {
+            PreparedStatement prepStmt = connection.prepareStatement("select  * from pizza where id=?");
+
+            prepStmt.setInt(1, id);
+            ResultSet rs = prepStmt.executeQuery();
+            while (rs.next()) {
+                boolean b=false;
+                if(rs.getInt(6)==1){
+                b=true;
+                }
+                p = new Pizza(rs.getInt(1), rs.getString(2), rs.getString(3), getCrust(rs.getString(4)), getSauce(rs.getString(5)),b,rs.getDouble(7),rs.getString(8));
+                return p;
+            }
+            prepStmt.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return p;   
+    }
+
 }

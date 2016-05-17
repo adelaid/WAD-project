@@ -1,39 +1,32 @@
 <%-- 
-    Document   : PizzaJSP
-    Created on : May 15, 2016, 1:12:45 PM
+    Document   : HistoryUserJSP
+    Created on : May 17, 2016, 1:47:54 PM
     Author     : Ada
 --%>
 
-<%@page import="java.util.List"%>
-<%@page import="dao.ProductDAO_Factory"%>
-<%@page import="java.util.ArrayList"%>
 <%@page import="dao.ProductDAOImpl"%>
 <%@page import="model.Ingredient"%>
+<%@page import="java.util.List"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="model.Pizza"%>
+<%@page import="dao.OrderDAO_Factory"%>
+<%@page import="dao.UserDAOFactory"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
-
-
-        <title>View Pizzas</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>JSP Page</title>
     </head>
     <body>
-        <%
-            ArrayList<Pizza> pizzas = (ArrayList<Pizza>) ProductDAOImpl.getInstance().getPizza();
+         <%
+         
 
-            boolean loggedIn = false;
-//            List<Crust> crusts = ProductDAO_Factory.getProductDAO().getCrust();
-//            List<Sauce> sauces = ProductDAO_Factory.getProductDAO().getSauce();
-//            List<Ingredient> ingredientsM = ProductDAO_Factory.getProductDAO().getIngredient("Meats");
-//            List<Ingredient> ingredientsV = ProductDAO_Factory.getProductDAO().getIngredient("Veggie");
-            if (session.getAttribute("user") != null) {
-                loggedIn = true;
-            }
+        String user=(String)session.getAttribute("user");    
+        int idorder=Integer.parseInt(request.getParameter("query"));
+        ArrayList<Pizza> pizzas=(ArrayList<Pizza>)OrderDAO_Factory.getOrderDAO().getClientPurchases(user, idorder);
         %>
-        <div id="content">
+   <div id="content">
 
             <nav>
                 <ul>
@@ -51,7 +44,7 @@
             <form method="post" action="CartC">
 
                 <table>
-                    <tr><td>Name</td><td>Size</td><td>Crust</td><td>Sauce</td><td>Cheese</td><td>Ingredients</td><td>Price</td><td>Quantity </td></tr>
+                    <tr><td>Name</td><td>Size</td><td>Crust</td><td>Sauce</td><td>Cheese</td><td>Ingredients</td><td>Price</td></tr>
                     <%for (Pizza p : pizzas) {%>
                     <tr>
                         <td><%=p.getName()%></td>
@@ -74,13 +67,13 @@
                         </td>
                       
                         <td><%=p.getPrice()%></td>
-                        <td><input type="text" name="<%=p.getId()%>" value="0"></td>
+                        
                     </tr>
                     <%}%>
                 </table>
 
 
-                <input type="submit" value="Buy">
+              
 
 
 

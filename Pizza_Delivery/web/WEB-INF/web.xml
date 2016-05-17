@@ -28,6 +28,18 @@
         <servlet-name>LogoutC</servlet-name>
         <servlet-class>controller.LogoutC</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>BuyC</servlet-name>
+        <servlet-class>controller.BuyC</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CartC</servlet-name>
+        <servlet-class>controller.CartC</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>HistoryC</servlet-name>
+        <servlet-class>controller.HistoryC</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RegistrationC</servlet-name>
         <url-pattern>/RegistrationC</url-pattern>
@@ -55,6 +67,18 @@
     <servlet-mapping>
         <servlet-name>LogoutC</servlet-name>
         <url-pattern>/LogoutC</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BuyC</servlet-name>
+        <url-pattern>/BuyC</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CartC</servlet-name>
+        <url-pattern>/CartC</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>HistoryC</servlet-name>
+        <url-pattern>/HistoryC</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

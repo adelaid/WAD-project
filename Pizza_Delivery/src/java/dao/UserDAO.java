@@ -92,4 +92,23 @@ private static UserDAO instance;
         return false; 
     }
     
+        public int getUserid(String username){
+      Singleton inst = Singleton.getInstance();
+    Connection connection = inst.getCon();
+        try {
+            PreparedStatement prepStmt = 
+                    connection.prepareStatement("select iduser from users where username = ?");
+             prepStmt.setString(1, username);
+            ResultSet rs = prepStmt.executeQuery();
+            if (rs.next()) {
+               int b=rs.getInt(1);
+               // System.out.println(rs.getInt(1));
+                rs.close();
+                  return b;
+                 
+            } }catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
 }

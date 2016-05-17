@@ -21,6 +21,11 @@ public class Ingredient {
         return id;
     }
 
+    @Override
+    public String toString() {
+        return "Ingredient{" + "id=" + id + ", name=" + name + ", type=" + type + ", price=" + price + ", image=" + image + '}';
+    }
+
     public Ingredient(int id, String name, String type, double price, String image) {
         this.id = id;
         this.name = name;

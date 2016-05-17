@@ -1,15 +1,15 @@
 <%-- 
-    Document   : PizzaJSP
-    Created on : May 15, 2016, 1:12:45 PM
+    Document   : CartJSP
+    Created on : May 17, 2016, 12:37:11 AM
     Author     : Ada
 --%>
 
+<%@page import="java.util.Iterator"%>
 <%@page import="java.util.List"%>
-<%@page import="dao.ProductDAO_Factory"%>
-<%@page import="java.util.ArrayList"%>
-<%@page import="dao.ProductDAOImpl"%>
 <%@page import="model.Ingredient"%>
+<%@page import="dao.ProductDAOImpl"%>
 <%@page import="model.Pizza"%>
+<%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -22,8 +22,33 @@
     </head>
     <body>
         <%
-            ArrayList<Pizza> pizzas = (ArrayList<Pizza>) ProductDAOImpl.getInstance().getPizza();
+            
+             ArrayList<Pizza> pizzas = (ArrayList<Pizza>) ProductDAOImpl.getInstance().getPizza();
+            ArrayList<Pizza> produseCumparate=(ArrayList<Pizza>)session.getAttribute("ProduseCumparate");
+             if(request.getParameter("query")!=null){
+                 int idProd=Integer.parseInt(request.getParameter("query"));
+//              
 
+
+Iterator<Pizza> i = produseCumparate.iterator();
+while (i.hasNext()) {
+   Pizza p = i.next();
+  if (p.getId()==idProd) {
+      if(p.getQuantity()>1){
+      p.setQuantity(p.getQuantity()-1);
+      }
+    i.remove();
+   
+  }
+   
+}
+                     
+            }
+             session.setAttribute("FinalProd", produseCumparate);
+            
+            
+            
+           
             boolean loggedIn = false;
 //            List<Crust> crusts = ProductDAO_Factory.getProductDAO().getCrust();
 //            List<Sauce> sauces = ProductDAO_Factory.getProductDAO().getSauce();
@@ -48,11 +73,11 @@
             </nav>
             <h1>View Order</h1>
 
-            <form method="post" action="CartC">
+            <form method="post" action="BuyC">
 
                 <table>
-                    <tr><td>Name</td><td>Size</td><td>Crust</td><td>Sauce</td><td>Cheese</td><td>Ingredients</td><td>Price</td><td>Quantity </td></tr>
-                    <%for (Pizza p : pizzas) {%>
+                    <tr><td>Name</td><td>Size</td><td>Crust</td><td>Sauce</td><td>Cheese</td><td>Ingredients</td><td>Price</td><td>Quantity </td><td></td></tr>
+                    <%for (Pizza p : produseCumparate) {%>
                     <tr>
                         <td><%=p.getName()%></td>
                         <td><%=p.getSize()%></td>
@@ -74,13 +99,14 @@
                         </td>
                       
                         <td><%=p.getPrice()%></td>
-                        <td><input type="text" name="<%=p.getId()%>" value="0"></td>
+                        <td><%=p.getQuantity()%></td>
+                        <td><a href="CartJSP.jsp?query=<%=p.getId()%>">Delete</a></td>
                     </tr>
                     <%}%>
                 </table>
 
 
-                <input type="submit" value="Buy">
+                <input type="submit" value="Finish Order">
 
 
 
@@ -92,3 +118,4 @@
         </div>
     </body>
 </html>
+

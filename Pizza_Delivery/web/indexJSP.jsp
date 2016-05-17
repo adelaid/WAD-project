@@ -18,6 +18,8 @@
                     <a href="LoginJSP.jsp">Login</a>
                     <a href="RegistrationJSP.jsp">Register</a>
                     <a href="CreatePizzaJSP.jsp">Create Pizza!</a>
+                    <a href="PizzaJSP.jsp">Menu</a>
+                    <a href="HistoryC">History</a>
                     <a href="ReviewJSP.jsp">Review</a>
                     <a href="LogoutC">Log out!</a>
 

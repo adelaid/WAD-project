@@ -5,10 +5,12 @@
  */
 package dao;
 
+import java.util.ArrayList;
 import java.util.List;
 import model.Crust;
 import model.Ingredient;
-import model.Product;
+import model.Pizza;
+
 import model.Sauce;
 
 /**
@@ -17,8 +19,15 @@ import model.Sauce;
  */
 public interface DAOProduct {
     
-  
+      public List<Pizza> getPizza();
     
+    public boolean insertIngredient(int pizzaId,int ingredientId);
+    
+    public boolean insertPizza(Pizza p);
+  
+    public ArrayList<Integer> getPizzaIds();
+    
+    public Pizza getPizza(int id);
 
  public  List<Crust> getCrust();
  
@@ -26,11 +35,19 @@ public interface DAOProduct {
  
  public List<Ingredient> getIngredient(String type);
  
+  public List<Ingredient> getIngredient(Pizza p);
+ 
  public Ingredient getIngredient(int id);
  
  public Crust getCrust(int id);
  
  public Sauce getSauce(int id);
+ 
+ public Crust getCrust(String name);
+ 
+ public Sauce getSauce(String name);
+ 
+ 
     
     
 

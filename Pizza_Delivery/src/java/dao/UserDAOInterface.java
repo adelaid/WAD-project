@@ -15,4 +15,5 @@ public interface UserDAOInterface {
     public boolean userExists(String username);
     
     public boolean isPasswordCorrect(String username, String password);
+     public int getUserid(String username);
 }

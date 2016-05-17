@@ -20,13 +20,50 @@ public class Pizza {
     private Sauce sauce;
     private boolean cheese;
     private ArrayList<Ingredient> ingredients;
+    private int quantity;
    
     private double price;
     private String image;
 
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public Pizza(int id, String name, String size, Crust crust, Sauce sauce, boolean cheese, int quantity, double price, String image) {
+        this.id = id;
+        this.name = name;
+        this.size = size;
+        this.crust = crust;
+        this.sauce = sauce;
+        this.cheese = cheese;
+        this.quantity = quantity;
+        this.price = price;
+        this.image = image;
+    }
+
+    
+    
+    
     public ArrayList<Ingredient> getIngredients() {
         return ingredients;
     }
+
+    public Pizza(int id, String name, String size, Crust crust, Sauce sauce, boolean cheese,double price, String image) {
+        this.id = id;
+        this.name = name;
+        this.size = size;
+        this.crust = crust;
+        this.sauce = sauce;
+        this.cheese = cheese;
+        this.ingredients = ingredients;
+        this.price = price;
+        this.image = image;
+    }
+    
 
     public void setIngredients(ArrayList<Ingredient> ingredients) {
         this.ingredients = ingredients;
@@ -44,7 +81,7 @@ public class Pizza {
         this.image = image;
     }
 
-    public Pizza(int id, String name, String size, Crust crust, Sauce sauce, boolean cheese, ArrayList<Ingredient> ingredients, double price, String image) {
+    public Pizza(String name, String size, Crust crust, Sauce sauce, boolean cheese, ArrayList<Ingredient> ingredients, double price, String image) {
         this.id = id;
         this.name = name;
         this.size = size;
