@@ -51,6 +51,18 @@ public class BuyC extends HttpServlet {
         String date=dateFormat.format(cal.getTime());
         
          ArrayList<Pizza> produseCumparate=(ArrayList<Pizza>)request.getSession().getAttribute("FinalProd");
+        // ArrayList<Pizza> makePizza =(ArrayList<Pizza>)request.getSession().getAttribute("ShoppingCart");
+         
+         
+//         if(!makePizza.isEmpty()){
+//             
+//             
+//         for(Pizza pp: makePizza){    
+//         produseCumparate.add(pp);
+//         }
+//         }
+         
+         
          double totalPrice=0;
          int totalQuantity=0;
          for(Pizza p:produseCumparate){

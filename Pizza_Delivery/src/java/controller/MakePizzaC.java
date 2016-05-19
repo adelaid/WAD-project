@@ -114,12 +114,12 @@ ProductDAO_Factory.getProductDAO().insertIngredient(ids2.get(ids2.size()-1) ,ii.
 }
 
  request.getSession().setAttribute("ShoppingCart", p);
-RequestDispatcher rd = request.getRequestDispatcher("ShoppingCarrtJSP.jsp");
+RequestDispatcher rd = request.getRequestDispatcher("PizzaJSP.jsp");
     rd.forward(request, response);
 
 }
 else{
-RequestDispatcher rd = request.getRequestDispatcher("CreatePizzaJSP.jsp");
+RequestDispatcher rd = request.getRequestDispatcher("PizzaJSP.jsp");
     rd.forward(request, response);
 }
 

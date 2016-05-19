@@ -146,6 +146,31 @@ List<Order> orders = new ArrayList<>();
         
         return pizzas;
     }
+             
+             public boolean pizzaBought(Pizza p,int userid){
+             Singleton inst = Singleton.getInstance();
+    Connection connection = inst.getCon();
+      try {
+            PreparedStatement prepStmt = 
+                    connection.prepareStatement("select pizzaid from pizza_orders o where userid=? and pizzaid=?");
+             prepStmt.setInt(1, userid);
+             prepStmt.setInt(2, p.getId());
+            ResultSet rs = prepStmt.executeQuery();
+            if (rs.next()) {
+           
+              
+              return true;
+                 
+            }
+            
+      
+      }
+      
+      catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+             }
          
          
 //           public List<Integer> getPizzaId(String user) {

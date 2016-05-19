@@ -19,4 +19,6 @@ public interface DAOOrder {
     public boolean createOrder2(OrderPizza op);
     public List<Order> getOrders(String user);
     public List<Pizza> getClientPurchases(String username,int orderId);
+    
+    public boolean pizzaBought(Pizza p,int userid);
 }

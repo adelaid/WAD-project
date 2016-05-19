@@ -4,6 +4,9 @@
     Author     : Ada
 --%>
 
+<%@page import="dao.OrderDAO_Factory"%>
+<%@page import="dao.UserDAOFactory"%>
+<%@page import="java.util.Iterator"%>
 <%@page import="java.util.List"%>
 <%@page import="dao.ProductDAO_Factory"%>
 <%@page import="java.util.ArrayList"%>
@@ -23,7 +26,9 @@
     <body>
         <%
             ArrayList<Pizza> pizzas = (ArrayList<Pizza>) ProductDAOImpl.getInstance().getPizza();
-
+            int idUser=UserDAOFactory.getUserDAO().getUserid((String)(session.getAttribute("user")));
+           // ArrayList<Pizza> pizzaCumparate=OrderDAO_Factory.getOrderDAO().
+             
             boolean loggedIn = false;
 //            List<Crust> crusts = ProductDAO_Factory.getProductDAO().getCrust();
 //            List<Sauce> sauces = ProductDAO_Factory.getProductDAO().getSauce();
@@ -32,6 +37,24 @@
             if (session.getAttribute("user") != null) {
                 loggedIn = true;
             }
+            
+            
+            Iterator<Pizza> ii = pizzas.iterator();
+while (ii.hasNext()) {
+   Pizza p = ii.next();
+  if (p.getName().startsWith("Personal")) {
+      if(!OrderDAO_Factory.getOrderDAO().pizzaBought(p, idUser)){
+      ii.remove();
+      }
+    
+   
+  }
+   
+}
+            
+          
+            
+           
         %>
         <div id="content">
 
