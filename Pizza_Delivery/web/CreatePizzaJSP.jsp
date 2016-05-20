@@ -210,7 +210,7 @@
                         </script>
 
 
-                        <h2>Meats :</h2>
+                        <p>Meats :</p>
 
                         <div class= "form-element">
                             <%for (Ingredient im : ingredientsM) {%>  
@@ -229,7 +229,7 @@
                         <%}%>
 
 
-                        <h2>Veggies :</h2>
+                        <p>Veggies :</p>
 
                         <div class= "form-element">
                             <%for (Ingredient iv : ingredientsV) {%>  
