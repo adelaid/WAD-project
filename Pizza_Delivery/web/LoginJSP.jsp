@@ -9,61 +9,88 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        
-       
+        <link rel="stylesheet" href="style.css" type="text/css"/>
         <title>Login</title>
-        
+
+
     </head>
-    
-    
-      <%
-          String error = "";
-            if (request.getAttribute("LOGIN_ERROR") != null) {
-                error = (String) request.getAttribute("LOGIN_ERROR");
-            }  
 
-        %>
+
+    <%
+        String error = "";
+        if (request.getAttribute("LOGIN_ERROR") != null) {
+            error = (String) request.getAttribute("LOGIN_ERROR");
+        }
+
+    %>
     <body>
-        <div id="content">
-            <div class="header">
-                
-                <span class="header-text">COMPANY NAME</span>
-            </div>
-           <nav>
-                <ul>
-                    <a href="indexJSP.jsp">Index</a>                    
-                    <a href="LoginJSP.jsp">Login</a>
-                    <a href="RegistrationJSP.jsp">Register</a>
-                    <a href="CreatePizzaJSP.jsp">Create Pizza!</a>
-                    <a href="ReviewJSP.jsp">Review</a>
-                    <a href="LogoutC">Log out!</a>
+        <div id="bigmenu">
 
-                </ul>
-            </nav>
-            </nav>
-            <h1>Login form</h1>
-            <form method="post" action="LoginC">
-                <div class="form-element">
-                    <label for="username">Username</label>
-                    <input type="text" name="uname" id="uname" required>
-                                 </div>
-                                   <div class="form-element">
-                                     <label for="password">Password</label>
-                                      <input type="password" name="password" id="password" required>
-                                  </div>
-                                  Don't have an account yet? <a href="Registration.jsp">Register</a>
-                 <%
-                   if (!"".equals(error)) {                       
-                 %>
-        
-        <div class="error"> error </div>
-        <%}
-%>
-      <div class="form-element">
-          <input type="submit" value="Submit">
-          <input type="reset" value="Reset">
-           </div>
-      </form>
-       </div>
-      </body>
-      </html>
+            <div id="bigmenulinks">
+                <a href="LoginJSP.jsp">Login</a>
+                <a href="RegistrationJSP.jsp">Register</a>
+            </div>
+        </div>
+        <div id="sidebar">
+            <h1><img id="pizzalogo" src="img/pizzalogotransp.png" alt="#" width="120px"/></h1>
+            
+
+            <div id="menu">
+                <a href="indexJSP.jsp">Home</a>
+                <a class="active" href="#">About Us</a> 
+                <a href="#">Contact</a> 
+                <a href="PizzaJSP.jsp">Menu</a>
+                <a href="CreatePizzaJSP.jsp">Create your own pizza!</a>
+                <a href="ReviewJSP.jsp">Reviews</a>
+                <a href="HistoryC">History</a>
+            </div>
+            <img id="logo" src="img/oneLogo.png" >
+        </div>
+        <div id="sidebar2">
+
+            <div id="menu2">
+
+            </div>
+        </div>
+
+        <div id="content">
+            <div id="uppermenu">
+                <nav>
+                    <ul>
+<!--                        <a href="index.jsp">Home</a>
+                        <a href="#">Contact</a>
+                        <a href="#">Menu</a>
+                        <a href="#">Special Discounts</a>-->
+
+
+                    </ul>
+                </nav>
+            </div>
+
+            <h1>Please fill in the form</h1>
+            <div class="loginform">
+                <form method="post" action="LoginC">
+                    <div class="form-element">
+                        <label for="username">Username</label>
+                        <input type="text" name="uname" id="uname" required>
+                    </div>
+                    <div class="form-element">
+                        <label for="password">Password</label>
+                        <input type="password" name="password" id="password" required>
+                    </div>
+                    Don't have an account yet? <a href="Registration.jsp">Register</a>
+                    <%                     if (!"".equals(error)) {
+                    %>
+
+                    <div class="error"> error </div>
+                    <%}
+                    %>
+                    <div class="form-element">
+                        <input type="submit" value="Submit">
+                        <input type="reset" value="Reset">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

@@ -71,9 +71,7 @@ try
             out.println("<font color=red><b>"+username+"</b> is already in use</font>");
             }
          
-  if(true){
-  out.println("Da");
-  }          
+          
      
            out.println();
     

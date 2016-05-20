@@ -15,12 +15,57 @@
 <html>
     <head>
 
-
+        <link rel="stylesheet" href="style.css" type="text/css" />
         <title>View Pizzas</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width">
     </head>
     <body>
+        <div id="bigmenu">
+
+        <div id="bigmenulinks">
+            <a href="LoginJSP.jsp">Login</a>
+            <a href="RegistrationJSP.jsp">Register</a>
+        </div>
+    </div>
+    <div id="sidebar">
+        <h1><img id="pizzalogo" src="img/pizzalogotransp.png" alt="#" width="120px"/></h1>
+        
+
+        <div id="menu">
+           <a href="indexJSP.jsp">Home</a>
+                <a class="active" href="#">About Us</a> 
+                <a href="#">Contact</a> 
+                <a href="PizzaJSP.jsp">Menu</a>
+                <a href="CreatePizzaJSP.jsp">Create your own pizza!</a>
+                <a href="ReviewJSP.jsp">Reviews</a>
+                
+                <% if(session.getAttribute("user")!=null)
+                {
+                    
+                
+                %>
+                <a href="HistoryC">History</a>
+                <%}%>
+        </div>
+        <img id="logo" src="img/oneLogo.png" >
+    </div>
+    <div id="sidebar2">
+
+        <div id="menu2">
+
+        </div>
+    </div>
+    <div id="uppermenu">
+        <nav>
+            <ul>
+<!--                <a href="index.jsp">Home</a>
+                <a href="#">Contact</a>
+                <a href="#">Menu</a>
+                <a href="#">Special Discounts</a>-->
+            </ul>
+        </nav>
+    </div>
         <%
             
              ArrayList<Pizza> pizzas = (ArrayList<Pizza>) ProductDAOImpl.getInstance().getPizza();
@@ -60,17 +105,18 @@ while (i.hasNext()) {
         %>
         <div id="content">
 
-            <nav>
-                <ul>
-                    <a href="indexJSP.jsp">Index</a>                    
-                    <a href="LoginJSP.jsp">Login</a>
-                    <a href="RegistrationJSP.jsp">Register</a>
-                    <a href="CreatePizzaJSP.jsp">Create Pizza!</a>
-                    <a href="ReviewJSP.jsp">Review</a>
-                    <a href="LogoutC">Log out!</a>
+             <div id="uppermenu">
+                <nav>
+                    <ul>
+<!--                        <a href="index.jsp">Home</a>
+                        <a href="#">Contact</a>
+                        <a href="#">Menu</a>
+                        <a href="#">Special Discounts</a>-->
 
-                </ul>
-            </nav>
+
+                    </ul>
+                </nav>
+            </div>
             <h1>View Order</h1>
 
             <form method="post" action="BuyC">
@@ -118,4 +164,3 @@ while (i.hasNext()) {
         </div>
     </body>
 </html>
-

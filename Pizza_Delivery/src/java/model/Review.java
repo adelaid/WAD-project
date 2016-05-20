@@ -54,4 +54,17 @@ public class Review {
         this.review = review;
     }
             
+    public String getStarsImage(){
+        if(this.getStars()==5)
+            return "img/stars5.png";
+        if(this.stars==4)
+            return "img/stars4.png";
+        if(this.stars==3)
+            return "img/stars3.png";
+        if(this.stars==2)
+            return "img/stars2.png";
+        if(this.stars==1)
+            return "img/stars1.png";
+        return "#";
+    }
 }

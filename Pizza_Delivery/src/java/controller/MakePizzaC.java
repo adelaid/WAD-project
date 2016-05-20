@@ -111,15 +111,18 @@ ArrayList<Integer> ids2=ProductDAOImpl.getInstance().getPizzaIds();
 
 for(Ingredient ii :ingredients){
 ProductDAO_Factory.getProductDAO().insertIngredient(ids2.get(ids2.size()-1) ,ii.getId());//1 2 16 3
+//p.setIngredients(ingredients);
 }
-
+p.setIngredients(ingredients);
+p.setId(ids2.get(ids2.size()-1));
+        
  request.getSession().setAttribute("ShoppingCart", p);
 RequestDispatcher rd = request.getRequestDispatcher("PizzaJSP.jsp");
     rd.forward(request, response);
 
 }
 else{
-RequestDispatcher rd = request.getRequestDispatcher("PizzaJSP.jsp");
+RequestDispatcher rd = request.getRequestDispatcher("indexJSP.jsp");
     rd.forward(request, response);
 }
 
