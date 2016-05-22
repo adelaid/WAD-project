@@ -46,9 +46,16 @@
             <div id="bigmenu">
 
                 <div id="bigmenulinks">
-                    <a href="LoginJSP.jsp">Login</a>
-                    <a href="RegistrationJSP.jsp">Register</a>
-                </div>
+            <%if(session.getAttribute("user")==null){%>
+            <a href="LoginJSP.jsp">Login</a>
+            <a href="RegistrationJSP.jsp">Register</a>
+            
+            <%}else{%>
+            You are logged in as <b><%=session.getAttribute("user")%></b>
+            <a href="LogoutC">Logout</a>
+            <%}%>
+            
+        </div>
             </div>
             <div id="sidebar">
                 <h1><img id="pizzalogo" src="img/pizzalogotransp.png" alt="#" width="120px"/></h1>
@@ -256,11 +263,13 @@
                                              </div>-->
 
                         <br>
+                        <%if(session.getAttribute("user")!=null){%>
+                        
                         <div class="form-element">
                             <input type="submit" value="Submit">
-                            <input type="reset" value="Reset">
+                          
                         </div>  
-
+<%}%>
 
                     </form>
                 </div>

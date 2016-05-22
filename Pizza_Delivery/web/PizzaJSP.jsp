@@ -26,9 +26,16 @@
     <body>
         <div id="bigmenu">
 
-        <div id="bigmenulinks">
+         <div id="bigmenulinks">
+            <%if(session.getAttribute("user")==null){%>
             <a href="LoginJSP.jsp">Login</a>
             <a href="RegistrationJSP.jsp">Register</a>
+            
+            <%}else{%>
+            You are logged in as <b><%=session.getAttribute("user")%></b>
+            <a href="LogoutC">Logout</a>
+            <%}%>
+            
         </div>
     </div>
     <div id="sidebar">
@@ -147,11 +154,11 @@ if(session.getAttribute("ShoppingCart")!=null){
                     </tr>
                     <%}%>
                 </table>
-
+<%if(session.getAttribute("user")!=null){%>
 
                 <input type="submit" value="Buy">
 
-
+<%}%>
 
 
             </form>
