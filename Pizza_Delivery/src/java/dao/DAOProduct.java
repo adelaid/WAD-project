@@ -19,6 +19,12 @@ import model.Sauce;
  */
 public interface DAOProduct {
     
+  public boolean updatePizza(String pizzaName,String imgPath);
+    
+public boolean insertSauce(Sauce s);
+    
+    public boolean insertCrust(Crust c);
+            
       public List<Pizza> getPizza();
     
     public boolean insertIngredient(int pizzaId,int ingredientId);

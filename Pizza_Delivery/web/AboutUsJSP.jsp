@@ -33,13 +33,19 @@
         
 
         <div id="menu">
-            <a class="active" href="indexJSP.jsp">Home</a>
-            <a href="AboutUsJSP.jsp">About Us</a> 
+            <a  href="indexJSP.jsp">Home</a>
+            <a class="active" href="AboutUsJSP.jsp">About Us</a> 
             <a href="#">Contact</a> 
+            <a href="PizzaJSP.jsp">Menu</a>
             <a href="CreatePizzaJSP.jsp">Create your own pizza!</a>
             <a href="ReviewJSP.jsp">Reviews</a>
-            <a href="PizzaJSP.jsp">Menu</a>
-            <a href="HistoryC">History</a>
+            <% if(session.getAttribute("user")!=null)
+                {
+                    
+                
+                %>
+                <a href="HistoryC">History</a>
+                <%}%>
         </div>
         <img id="logo" src="img/oneLogo.png" >
     </div>

@@ -26,6 +26,13 @@ public class Ingredient {
         return name+" ,";
     }
 
+    public Ingredient(String name, String type, double price, String image) {
+        this.name = name;
+        this.type = type;
+        this.price = price;
+        this.image = image;
+    }
+
     public Ingredient(int id, String name, String type, double price, String image) {
         this.id = id;
         this.name = name;

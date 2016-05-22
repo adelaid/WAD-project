@@ -39,17 +39,23 @@
         </div>
     </div>
     <div id="sidebar">
-        <h1><img id="pizzalogo" src="img/pizzalogotransp.png" alt="#" width="120px"/></h1>
+       <h1><img id="pizzalogo" src="img/pizzalogotransp.png" alt="#" width="100px"></h1>
        
 
         <div id="menu">
            <a href="indexJSP.jsp">Home</a>
-                <a class="active" href="#">About Us</a> 
+                    <a  href="AboutsUsJsp.jsp">About Us</a>  
                 <a href="#">Contact</a> 
-                <a href="PizzaJSP.jsp">Menu</a>
+                <a class="active" href="PizzaJSP.jsp">Menu</a>
                 <a href="CreatePizzaJSP.jsp">Create your own pizza!</a>
                 <a href="ReviewJSP.jsp">Reviews</a>
+                <% if(session.getAttribute("user")!=null)
+                {
+                    
+                
+                %>
                 <a href="HistoryC">History</a>
+                <%}%>
         </div>
         <img id="logo" src="img/oneLogo.png" >
     </div>
@@ -90,10 +96,10 @@
 while (ii.hasNext()) {
    Pizza p = ii.next();
   if (p.getName().startsWith("Personal")) {
-      if(!OrderDAO_Factory.getOrderDAO().pizzaBought(p, idUser)){
+   //   if(!OrderDAO_Factory.getOrderDAO().pizzaBought(p, idUser)){
           
       ii.remove();
-      }
+    //  }
        
      
     
@@ -104,8 +110,11 @@ while (ii.hasNext()) {
    String a="aa";
 if(session.getAttribute("ShoppingCart")!=null){
              creata =(Pizza)session.getAttribute("ShoppingCart");
+//            String img=ProductDAO_Factory.getProductDAO().getImgPizza(creata.getName());
+//             creata.setImage(img);
              pizzas.add(creata);
              a=creata.getIngredients().toString();
+             session.setAttribute("ShoppingCart", null);
             }
           
             
@@ -120,10 +129,21 @@ if(session.getAttribute("ShoppingCart")!=null){
               
                 
                 <table>
-                    <tr><td>Name</td><td>Size</td><td>Crust</td><td>Sauce</td><td>Cheese</td><td>Ingredients</td><td>Price</td><td>Quantity </td></tr>
+                    <tr><td>Image</td><td>Name</td><td>Size</td><td>Crust</td><td>Sauce</td><td>Cheese</td><td>Ingredients</td><td>Price</td><td>Quantity </td></tr>
                     <%for (Pizza p : pizzas) {%>
+                    
+                    
+                    
                     <tr>
+                          <td>
+                        <%if(p.getImage().equals("-")){%>
+                        <img src="./img/pizzaBuilder.png" width="100px" height="100px">
                         
+                        <%}else{%>
+                        <img src="<%=p.getImage()%>" width="100px" height="100px">
+                   <%}%>
+                        </td>
+
                         <td><%=p.getName()%></td>
                         <td><%=p.getSize()%></td>
                         <td><%=p.getCrust().getName()%></td>

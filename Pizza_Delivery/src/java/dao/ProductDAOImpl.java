@@ -36,8 +36,52 @@ public class ProductDAOImpl implements DAOProduct {
     
     
     
+    public boolean updatePizza(String pizzaName,String imgPath){
     
-    
+   // UPDATE `pizzadelivery`.`pizza` SET `img`='./img/pizza80.png' WHERE `id`='1';
+ Singleton inst = Singleton.getInstance();
+        Connection connection = inst.getCon();
+        
+        try {
+            PreparedStatement prepStmt = connection.prepareStatement("update pizza set img=? where name=?" );
+
+            prepStmt.setString(1, imgPath);
+            prepStmt.setString(2, pizzaName);
+          
+//            if(p.isCheese()){
+//            prepStmt.setInt(5, 1);
+//            }
+//            else{
+//            prepStmt.setInt(5, 0);
+//        
+           prepStmt.executeUpdate();
+            //connection.commit();
+            return true;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return false;
+    }
+//    
+//    public String getImgPizza(String name){
+//     Singleton inst = Singleton.getInstance();
+//        Connection connection = inst.getCon();
+//        String imagine="";
+//        try {
+//             PreparedStatement prepStmt = connection.prepareStatement("select img from pizza where name=?");
+//
+//            prepStmt.setString(1, name);
+//            ResultSet rs = prepStmt.executeQuery();
+//            while (rs.next()) {
+//                imagine=rs.getString(1);
+//            }
+//            prepStmt.close();
+//        } catch (SQLException ex) {
+//            ex.printStackTrace();
+//        }
+//        return imagine;
+//    
+//    }
     
     
       public List<Pizza> getPizza() {
@@ -45,7 +89,7 @@ public class ProductDAOImpl implements DAOProduct {
         Connection connection = inst.getCon();
         List<Pizza> pizzas = new ArrayList<>();
         try {
-            PreparedStatement prepStmt = connection.prepareStatement("select  * from pizza");
+            PreparedStatement prepStmt = connection.prepareStatement("select * from pizza");
             ResultSet rs = prepStmt.executeQuery();
             while (rs.next()) {
                 boolean b=false;
@@ -336,5 +380,93 @@ public class ProductDAOImpl implements DAOProduct {
         }
         return p;   
     }
+    
+    
+    public boolean insertCrust(Crust c){
+     Singleton inst = Singleton.getInstance();
+        Connection connection = inst.getCon();
+        
+        try {
+            PreparedStatement prepStmt = connection.prepareStatement("insert into crust values(default,?,?,?,?)");
 
+            prepStmt.setString(1, c.getName());
+            prepStmt.setDouble(2, c.getPrice());
+            prepStmt.setString(3,c.getDescription());
+            prepStmt.setString(4, c.getImage());
+//            if(p.isCheese()){
+//            prepStmt.setInt(5, 1);
+//            }
+//            else{
+//            prepStmt.setInt(5, 0);
+//            }
+            
+           prepStmt.executeUpdate();
+            connection.commit();
+            return true;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return false;
+    }
+
+    
+     public boolean insertSauce(Sauce s){
+     Singleton inst = Singleton.getInstance();
+        Connection connection = inst.getCon();
+        
+        try {
+            PreparedStatement prepStmt = connection.prepareStatement("insert into sauce values(default,?,?,?,?)");
+
+            prepStmt.setString(1, s.getName());
+            prepStmt.setDouble(2, s.getPrice());
+            prepStmt.setString(3,s.getDescription());
+            prepStmt.setString(4, s.getImage());
+//            if(p.isCheese()){
+//            prepStmt.setInt(5, 1);
+//            }
+//            else{
+//            prepStmt.setInt(5, 0);
+//            }
+            
+           prepStmt.executeUpdate();
+            connection.commit();
+            return true;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return false;
+    }
+     
+     
+     
+//     public boolean insertIngredient(Ingredient i){
+//      Singleton inst = Singleton.getInstance();
+//        Connection connection = inst.getCon();
+//        
+//        try {
+//            PreparedStatement prepStmt = connection.prepareStatement("insert into ingredients values(default,?,?,?,?)");
+//
+//            prepStmt.setString(1, i.getName());
+//            prepStmt.setString(2,i.getType());
+//            prepStmt.setDouble(3, i.getPrice());
+//            
+//            prepStmt.setString(4, i.getImage());
+////            if(p.isCheese()){
+////            prepStmt.setInt(5, 1);
+////            }
+////            else{
+////            prepStmt.setInt(5, 0);
+////            }
+//            
+//           prepStmt.executeUpdate();
+//            connection.commit();
+//            return true;
+//        } catch (SQLException ex) {
+//            ex.printStackTrace();
+//        }
+//        return false;
+//     
+//     }
+    
+    
 }

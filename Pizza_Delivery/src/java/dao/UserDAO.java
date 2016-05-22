@@ -111,4 +111,31 @@ private static UserDAO instance;
         }
         return 0;
     }
+        
+         public boolean isAdmin(String username) {
+    Singleton inst = Singleton.getInstance();
+    Connection connection = inst.getCon();
+         try {
+            PreparedStatement prepStmt = 
+                    connection.prepareStatement("SELECT usertype from users u where u.username = ?");
+            prepStmt.setString(1, username);
+            ResultSet rs = prepStmt.executeQuery();
+            //result set is empty if there are no users with the same username
+            if (rs.next()) {
+                String a=rs.getString(1);
+                rs.close();
+                if(a.equals("admin")){
+                    return true;
+                }
+                else {
+                return false;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;    
+    }
+    
+        
 }

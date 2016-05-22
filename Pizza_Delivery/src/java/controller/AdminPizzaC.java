@@ -7,19 +7,16 @@ package controller;
 
 import dao.ProductDAOImpl;
 import dao.ProductDAO_Factory;
-import dao.UserDAOFactory;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Enumeration;
-import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import util.CreateImage;
-
 import model.Crust;
 import model.Ingredient;
 import model.Pizza;
@@ -29,7 +26,7 @@ import model.Sauce;
  *
  * @author Ada
  */
-public class MakePizzaC extends HttpServlet {
+public class AdminPizzaC extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -42,15 +39,15 @@ public class MakePizzaC extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
         response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
+
         RequestDispatcher rd;
         ArrayList<Double> price = new ArrayList<Double>();
         boolean admin = false;
 //        if (UserDAOFactory.getUserDAO().isAdmin((String)request.getSession().getAttribute("uname"))) {
 //            admin = true;
 //        }
+        String pName = request.getParameter("pname");
         String size = request.getParameter("size");
         int crustId = Integer.parseInt(request.getParameter("crust"));
         int sauceId = Integer.parseInt(request.getParameter("sauce").substring(1));
@@ -105,30 +102,31 @@ public class MakePizzaC extends HttpServlet {
         if (totalPrice != 0) {
             bought = true;
         }
-        if (bought) {
-            Pizza p = new Pizza(pizzaName, size, c, s, cheese, ingredients, totalPrice, "-");
-            ProductDAO_Factory.getProductDAO().insertPizza(p);
 
-            ArrayList<Integer> ids2 = ProductDAOImpl.getInstance().getPizzaIds();
+        Pizza p = new Pizza(pName, size, c, s, cheese, ingredients, totalPrice, "-");
+       ProductDAO_Factory.getProductDAO().insertPizza(p);
 
-            for (Ingredient ii : ingredients) {
-                ProductDAO_Factory.getProductDAO().insertIngredient(ids2.get(ids2.size() - 1), ii.getId());//1 2 16 3
-//p.setIngredients(ingredients);
-            }
-            p.setIngredients(ingredients);
-            p.setId(ids2.get(ids2.size() - 1));
+        ArrayList<Integer> ids2 = ProductDAOImpl.getInstance().getPizzaIds();
+
+        for (Ingredient ii : ingredients) {
+            ProductDAO_Factory.getProductDAO().insertIngredient(ids2.get(ids2.size() - 1), ii.getId());//1 2 16 3
+p.setIngredients(ingredients);
+        }
+        p.setIngredients(ingredients);
+        p.setId(ids2.get(ids2.size() - 1));
 
 //String imgPath=CreateImage.getInstance().createImage(p);
 //p.setImage(imgPath);
 //ProductDAO_Factory.getProductDAO().updatePizza(pizzaName, imgPath);
-            request.getSession().setAttribute("ShoppingCart", p);
-            rd = request.getRequestDispatcher("PizzaJSP.jsp");
-            rd.forward(request, response);
+        p.setName(pName);
+        String pimg=CreateImage.getInstance().newImage(p);
+        p.setImage(pimg);
+        ProductDAO_Factory.getProductDAO().updatePizza(pName, pimg);
+        
 
-        } else {
-            rd = request.getRequestDispatcher("indexJSP.jsp");
-            rd.forward(request, response);
-        }
+    
+                rd = request.getRequestDispatcher("indexJSP.jsp");
+                rd.forward(request, response);
 
     }
 

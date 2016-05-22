@@ -3,6 +3,7 @@
     Created on : May 15, 2016, 3:14:42 PM
     Author     : Ada
 --%>
+<%@page import="dao.UserDAOFactory"%>
 <%@page import="model.Ingredient"%>
 <%@page import="model.Sauce"%>
 <%@page import="dao.ProductDAO_Factory"%>
@@ -62,13 +63,20 @@
                
 
                 <div id="menu">
-                    <a class="active" href="indexJSP.jsp">Home</a>
-                    <a href="AboutUsJSP.jsp">About Us</a> 
+                    <a  href="indexJSP.jsp">Home</a>
+                      <a  href="AboutsUsJsp.jsp">About Us</a> 
                     <a href="#">Contact</a> 
-                    <a href="CreatePizzaJSP.jsp">Create your own pizza!</a>
-                    <a href="ReviewJSP.jsp">Reviews</a>
                     <a href="PizzaJSP.jsp">Menu</a>
-                    <a href="HistoryC">History</a>
+                    <a class="active" href="CreatePizzaJSP.jsp">Create your own pizza!</a>
+                    <a href="ReviewJSP.jsp">Reviews</a>
+                    
+                    <% if(session.getAttribute("user")!=null)
+                {
+                    
+                
+                %>
+                <a href="HistoryC">History</a>
+                <%}%>
                 </div>
                  <img id="logo" src="img/oneLogo.png" >
             </div>
@@ -93,8 +101,14 @@
                 <h1>Create your own pizza!</h1>  
                 <div class="pizzaForm">
                     <img src="img/boardPizza.png" style="position: absolute; z-index: 1; background-color: transparent; width: 400px; left: 58.5%; top: 23%;">
-
-                    <form method="post" action="MakePizzaC">
+  <%String action="MakePizzaC";
+      String admin=(String)session.getAttribute("user");
+                            if(UserDAOFactory.getUserDAO().isAdmin(admin)){
+                                action="AdminPizzaC";
+                            }%>
+                            
+                          
+                    <form method="post" action="<%=action%>">
                         <div class= "form-element">
                             <label for= "size">Size</label>
                             <select name="size" id= "size ">
@@ -261,7 +275,17 @@
                                              <input type= "checkbox" name="a" id= "a" value="aa">
                                             
                                              </div>-->
-
+                        
+                        <%
+                            if(UserDAOFactory.getUserDAO().isAdmin(admin)){%>
+                        
+                        <div class="form-element">
+                          <label for="PizzaName">Pizza Name</label>
+                        <input type="text" name="pname" id="pname" required>
+                          
+                        </div> 
+                        <%}%>
+                        
                         <br>
                         <%if(session.getAttribute("user")!=null){%>
                         

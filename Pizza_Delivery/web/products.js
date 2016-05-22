@@ -47,5 +47,11 @@
             $('#' + $(this).val()).show();
         });
     });
+     $(document).ready(function(){
+        $('#product').change(function(){
+            $('.dede').hide();
+            $('#' + $(this).val()).show();
+        });
+    });
     
  

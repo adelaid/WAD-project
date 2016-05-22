@@ -40,6 +40,14 @@
         <servlet-name>HistoryC</servlet-name>
         <servlet-class>controller.HistoryC</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AddProductC</servlet-name>
+        <servlet-class>controller.AddProductC</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminPizzaC</servlet-name>
+        <servlet-class>controller.AdminPizzaC</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RegistrationC</servlet-name>
         <url-pattern>/RegistrationC</url-pattern>
@@ -79,6 +87,14 @@
     <servlet-mapping>
         <servlet-name>HistoryC</servlet-name>
         <url-pattern>/HistoryC</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddProductC</servlet-name>
+        <url-pattern>/AddProductC</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminPizzaC</servlet-name>
+        <url-pattern>/AdminPizzaC</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

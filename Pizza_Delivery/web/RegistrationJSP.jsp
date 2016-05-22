@@ -40,12 +40,18 @@
 
             <div id="menu">
                 <a href="indexJSP.jsp">Home</a>
-                <a class="active" href="#">About Us</a> 
+                    <a  href="AboutsUsJsp.jsp">About Us</a>  
                 <a href="#">Contact</a> 
                 <a href="PizzaJSP.jsp">Menu</a>
                 <a href="CreatePizzaJSP.jsp">Create your own pizza!</a>
                 <a href="ReviewJSP.jsp">Reviews</a>
+               <% if(session.getAttribute("user")!=null)
+                {
+                    
+                
+                %>
                 <a href="HistoryC">History</a>
+                <%}%>
             </div>
             <img id="logo" src="img/oneLogo.png" >
         </div>

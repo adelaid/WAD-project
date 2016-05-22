@@ -23,6 +23,17 @@ public class Crust {
         this.description = description;
         this.image = image;
     }
+
+    public Crust(String name, double price, String description, String image) {
+        this.name = name;
+        this.price = price;
+        this.description = description;
+        this.image = image;
+    }
+
+    public Crust(String imagineCrust) {
+    this.image=imagineCrust;   
+    }
     
     
 

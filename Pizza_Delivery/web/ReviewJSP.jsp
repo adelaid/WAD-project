@@ -17,7 +17,7 @@
         <link rel="stylesheet" href="reviewStars.css" type="text/css" />
         <link rel="stylesheet" href="style.css" type="text/css" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Review</title>
     </head>
     <body>
         <div id="bigmenu">
@@ -35,17 +35,24 @@
         </div>
         </div>
         <div id="sidebar">
-            <h1><img id="pizzalogo" src="img/pizzalogotransp.png" alt="#" width="120px"/></h1>
-            <h2>Pizza is in session!</h2>
+            <h1><img id="pizzalogo" src="img/pizzalogotransp.png" alt="#" width="100px"/></h1>
+         
 
             <div id="menu">
-                <a class="active" href="indexJSP.jsp">Home</a>
+                <a href="indexJSP.jsp">Home</a>
             <a href="AboutUsJSP.jsp">About Us</a> 
             <a href="#">Contact</a> 
+            <a  href="PizzaJSP.jsp">Menu</a>
             <a href="CreatePizzaJSP.jsp">Create your own pizza!</a>
-            <a href="ReviewJSP.jsp">Reviews</a>
-            <a href="PizzaJSP.jsp">Menu</a>
-            <a href="HistoryC">History</a>
+            <a class="active" href="ReviewJSP.jsp">Reviews</a>
+            
+           <% if(session.getAttribute("user")!=null)
+                {
+                    
+                
+                %>
+                <a href="HistoryC">History</a>
+                <%}%>
             </div>
         </div>
         <div id="sidebar2">

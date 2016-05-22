@@ -31,29 +31,34 @@ public class LoginC extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       String username=request.getParameter("uname");
-String password=request.getParameter("password");
-String type;
-if(UserDAOFactory.getUserDAO().isPasswordCorrect(username, password)){
+        String username = request.getParameter("uname");
+        String password = request.getParameter("password");
+        String type;
+
+        if (UserDAOFactory.getUserDAO().isPasswordCorrect(username, password)) {
             // user exists
             RequestDispatcher rd;
-         
-             
-            request.getSession().setAttribute("user", username);
-            rd = request.getRequestDispatcher("indexJSP.jsp");
-            rd.forward(request, response);
-             
-            
+            if (UserDAOFactory.getUserDAO().isAdmin(username)) {
+                request.getSession().setAttribute("user", username);
+                rd = request.getRequestDispatcher("AdminJSP.jsp");
+                rd.forward(request, response);
+
+            } else {
+                request.getSession().setAttribute("user", username);
+                rd = request.getRequestDispatcher("indexJSP.jsp");
+                rd.forward(request, response);
+            }
         } else {
             // does not exist
-            String error="User does not exist or password is incorrect";
-            request.setAttribute("LOGIN_ERROR", error);
-            RequestDispatcher rd = request.getRequestDispatcher("RegistrationJSP.jsp");
-            rd.forward(request, response);
+
+            {
+                String error = "User does not exist or password is incorrect";
+                request.setAttribute("LOGIN_ERROR", error);
+                RequestDispatcher rd = request.getRequestDispatcher("RegistrationJSP.jsp");
+                rd.forward(request, response);
+
+            }
         }
-
-
-
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
