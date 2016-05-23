@@ -15,9 +15,11 @@
     <head>
 
         <link rel="stylesheet" href="reviewStars.css" type="text/css" />
-        <link rel="stylesheet" href="style.css" type="text/css" />
+        <link rel="stylesheet" href="style2.css" type="text/css" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Review</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
     </head>
     <body>
         <div id="bigmenu">
@@ -35,13 +37,13 @@
         </div>
         </div>
         <div id="sidebar">
-            <h1><img id="pizzalogo" src="img/pizzalogotransp.png" alt="#" width="100px"/></h1>
+            <h1><img id="pizzalogo" src="img/pizzalogotransp.png" alt="#" width="120px"/></h1>
          
 
             <div id="menu">
                 <a href="indexJSP.jsp">Home</a>
             <a href="AboutUsJSP.jsp">About Us</a> 
-            <a href="#">Contact</a> 
+            <a href="ContactJSP.jsp">Contact</a>
             <a  href="PizzaJSP.jsp">Menu</a>
             <a href="CreatePizzaJSP.jsp">Create your own pizza!</a>
             <a class="active" href="ReviewJSP.jsp">Reviews</a>
@@ -54,6 +56,10 @@
                 <a href="HistoryC">History</a>
                 <%}%>
             </div>
+            <br><br>
+            <br><br>
+            <br><br>
+            <img id="logo" src="img/pizzaBoy.png" >
         </div>
         <div id="sidebar2">
 
@@ -62,14 +68,12 @@
             </div>
         </div>
 
-        <div id="content">
+        <div id="content" style="background: url(img/MyPizzaBlur.jpg); background-repeat: no-repeat">
             <div id="uppermenu">
                 <nav>
                     <ul>
-<!--                        <a href="index.jsp">Home</a>
-                        <a href="#">Contact</a>
-                        <a href="#">Menu</a>
-                        <a href="#">Special Discounts</a>-->
+                        <li><a class="PolyLogo" href="indexJSP.jsp"></a></li>
+                        <li id="message"><em>Be creative!</em></li>
                     </ul>
                 </nav>
             </div>

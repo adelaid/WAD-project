@@ -18,7 +18,7 @@
 <html>
     <head>
 
-        <link rel="stylesheet" href="style.css" type="text/css" />
+        <link rel="stylesheet" href="style2.css" type="text/css" />
         <title>View Pizzas</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width">
@@ -39,13 +39,13 @@
         </div>
     </div>
     <div id="sidebar">
-       <h1><img id="pizzalogo" src="img/pizzalogotransp.png" alt="#" width="100px"></h1>
+       <h1><img id="pizzalogo" src="img/pizzalogotransp.png" alt="#" width="120px"></h1>
        
 
         <div id="menu">
            <a href="indexJSP.jsp">Home</a>
-                    <a  href="AboutsUsJsp.jsp">About Us</a>  
-                <a href="#">Contact</a> 
+                    <a  href="AboutsUsJSP.jsp">About Us</a>  
+                <a href="ContactJSP.jsp">Contact</a>
                 <a class="active" href="PizzaJSP.jsp">Menu</a>
                 <a href="CreatePizzaJSP.jsp">Create your own pizza!</a>
                 <a href="ReviewJSP.jsp">Reviews</a>
@@ -57,7 +57,10 @@
                 <a href="HistoryC">History</a>
                 <%}%>
         </div>
-        <img id="logo" src="img/oneLogo.png" >
+        <br><br>
+            <br><br>
+            <br><br>
+            <img id="logo" src="img/pizzaBoy.png" >
     </div>
     <div id="sidebar2">
 
@@ -68,10 +71,8 @@
     <div id="uppermenu">
         <nav>
             <ul>
-<!--                <a href="index.jsp">Home</a>
-                <a href="#">Contact</a>
-                <a href="#">Menu</a>
-                <a href="#">Special Discounts</a>-->
+                      <li><a class="PolyLogo" href="indexJSP.jsp"></a></li>
+                    <li id="message"><em>Be creative!</em></li>
             </ul>
         </nav>
     </div>
@@ -120,16 +121,16 @@ if(session.getAttribute("ShoppingCart")!=null){
             
            
         %>
-        <div id="content">
+        <div id="content" style='background-image: url("img/anotherBGBlur.jpg"); background-repeat: no-repeat; background-size: 200% auto; height: 800px;'>
 
            
             <h1>View Order</h1>
-
+            <div id="reviewsArea">
             <form method="post" action="CartC">
               
                 
-                <table>
-                    <tr><td>Image</td><td>Name</td><td>Size</td><td>Crust</td><td>Sauce</td><td>Cheese</td><td>Ingredients</td><td>Price</td><td>Quantity </td></tr>
+                <table id="reviewsTable">
+                    <tr id="tableHead"><td>Image</td><td>Name</td><td>Size</td><td>Crust</td><td>Sauce</td><td>Cheese</td><td>Ingredients</td><td>Price</td><td>Quantity </td></tr>
                     <%for (Pizza p : pizzas) {%>
                     
                     
@@ -137,10 +138,10 @@ if(session.getAttribute("ShoppingCart")!=null){
                     <tr>
                           <td>
                         <%if(p.getImage().equals("-")){%>
-                        <img src="./img/pizzaBuilder.png" width="100px" height="100px">
+                        <img id="menuPizza" src="./img/pizzaBuilder.png" width="100px" height="100px">
                         
                         <%}else{%>
-                        <img src="<%=p.getImage()%>" width="100px" height="100px">
+                        <img id="menuPizza" src="<%=p.getImage()%>" width="100px" height="100px">
                    <%}%>
                         </td>
 
@@ -176,14 +177,14 @@ if(session.getAttribute("ShoppingCart")!=null){
                 </table>
 <%if(session.getAttribute("user")!=null){%>
 
-                <input type="submit" value="Buy">
+                <input class="Formbuttons" type="submit" value="Buy">
 
 <%}%>
 
 
             </form>
 
-
+            </div>
 
         </div>
     </body>

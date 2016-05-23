@@ -8,7 +8,7 @@ and open the template in the editor.
     Author     : Ada
 */
 
-.pizzaForm
+.pizzaForm, .pizzaFormAdmin
 {
     z-index: 1;
     width: 35%;
@@ -17,19 +17,24 @@ and open the template in the editor.
     text-align: left;
     background-size: 100% 100%;
     background-repeat: no-repeat;
+    background-image: url(img/onePattern2.png);
 
 }
-.pizzaForm .pizzaH2
+.pizzaFormAdmin
+{
+    text-align: center;
+}
+.pizzaForm .pizzaH2, .pizzaFormAdmin .pizzaH2
 {
     text-align:left;
 }
-.pizzaForm form .form-element label
+.pizzaForm form .form-element label, .pizzaFormAdmin form .form-element label
 {
     font-size: 23px;
     color: #2A0101;
 }
 
-.pizzaForm form .form-element input.Formbuttons
+.pizzaForm form .form-element input.Formbuttons, .pizzaFormAdmin form .form-element input.Formbuttons
 {
     width: 100px;
     height: 50px;

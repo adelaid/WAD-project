@@ -10,17 +10,31 @@ and open the template in the editor.
 
 .pizzaForm
 {
-z-index: 1;
-background: url(img/onePattern.png);
-width: 35%;
-margin: 1%;
-padding: 45px;
-text-align: left;
-background-size: 100% 100%;
-background-repeat: no-repeat;
-box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    z-index: 1;
+    width: 35%;
+    margin: 1%;
+    padding: 45px;
+    text-align: left;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-image: url(img/onePattern2.png);
+
 }
 .pizzaForm .pizzaH2
 {
     text-align:left;
+}
+.pizzaForm form .form-element label
+{
+    font-size: 23px;
+    color: #2A0101;
+}
+
+.pizzaForm form .form-element input.Formbuttons
+{
+    width: 100px;
+    height: 50px;
+    background-color: rgb(243, 219, 35);
+    font-size: 20px;
+    color: rgb(191, 18, 18);
 }

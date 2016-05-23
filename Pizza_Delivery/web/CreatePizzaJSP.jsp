@@ -17,8 +17,8 @@
 
         <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js "></script>
         <script type="text/javascript" src="jquery.min.js"></script>
-        <link rel="stylesheet" href="createPizza2.css" type="text/css" />
-        <link rel="stylesheet" href="style.css" type="text/css" />
+        <link rel="stylesheet" href="createPizza3.css" type="text/css" />
+        <link rel="stylesheet" href="style2.css" type="text/css" />
 
 
         <script type="text/javascript" src="products.js"></script>
@@ -64,8 +64,8 @@
 
                 <div id="menu">
                     <a  href="indexJSP.jsp">Home</a>
-                      <a  href="AboutsUsJsp.jsp">About Us</a> 
-                    <a href="#">Contact</a> 
+                      <a  href="AboutsUsJSP.jsp">About Us</a> 
+                    <a href="ContactJSP.jsp">Contact</a> 
                     <a href="PizzaJSP.jsp">Menu</a>
                     <a class="active" href="CreatePizzaJSP.jsp">Create your own pizza!</a>
                     <a href="ReviewJSP.jsp">Reviews</a>
@@ -78,7 +78,10 @@
                 <a href="HistoryC">History</a>
                 <%}%>
                 </div>
-                 <img id="logo" src="img/oneLogo.png" >
+                 <br><br>
+            <br><br>
+            <br><br>
+            <img id="logo" src="img/pizzaBoy.png" >
             </div>
             <div id="sidebar2">
 
@@ -87,14 +90,12 @@
                 </div>
             </div>
 
-            <div id="content">
+            <div id="content" style="background-image: url(img/ingredients.jpg);background-size: inherit;background-repeat: no-repeat; overflow-y: hidden;">
                 <div id="uppermenu">
                     <nav>
                         <ul>
-                            <!--                        <a href="index.jsp">Home</a>
-                                                    <a href="#">Contact</a>
-                                                    <a href="#">Menu</a>
-                                                    <a href="#">Special Discounts</a>-->
+                            <li><a class="PolyLogo" href="indexJSP.jsp"></a></li>
+                        <li id="message"><em>Be creative!</em></li>
                         </ul>
                     </nav>
                 </div>

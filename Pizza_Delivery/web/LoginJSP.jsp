@@ -9,9 +9,10 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" href="style.css" type="text/css"/>
+        <link rel="stylesheet" href="style2.css" type="text/css"/>
         <title>Login</title>
-
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
 
     </head>
 
@@ -45,7 +46,7 @@
             <div id="menu">
                 <a href="indexJSP.jsp">Home</a>
                     <a  href="AboutsUsJsp.jsp">About Us</a>  
-                <a href="#">Contact</a> 
+                <a href="ContactJSP.jsp">Contact</a> 
                 <a href="PizzaJSP.jsp">Menu</a>
                 <a href="CreatePizzaJSP.jsp">Create your own pizza!</a>
                 <a href="ReviewJSP.jsp">Reviews</a>
@@ -57,7 +58,10 @@
                 <a href="HistoryC">History</a>
                 <%}%>
             </div>
-            <img id="logo" src="img/oneLogo.png" >
+            <br><br>
+            <br><br>
+            <br><br>
+            <img id="logo" src="img/pizzaBoy.png" >
         </div>
         <div id="sidebar2">
 
@@ -66,21 +70,19 @@
             </div>
         </div>
 
-        <div id="content">
+        <div id="contentUser" style='background-size: 100% auto; background-attachment: fixed;'>
             <div id="uppermenu">
                 <nav>
                     <ul>
-<!--                        <a href="index.jsp">Home</a>
-                        <a href="#">Contact</a>
-                        <a href="#">Menu</a>
-                        <a href="#">Special Discounts</a>-->
 
+                        <li><a class="PolyLogo" href="indexJSP.jsp"></a></li>
+                        <li id="message"><em>Be creative!</em></li>
 
                     </ul>
                 </nav>
             </div>
 
-            <h1>Please fill in the form</h1>
+            <h1>Login</h1>
             <div class="loginform">
                 <form method="post" action="LoginC">
                     <div class="form-element">
@@ -99,8 +101,8 @@
                     <%}
                     %>
                     <div class="form-element">
-                        <input type="submit" value="Submit">
-                        <input type="reset" value="Reset">
+                        <input id="formBt" style="background-color: rgb(242, 225, 42);" type="submit" value="Submit">
+                        <input id="formBt" style="background-color: rgb(242, 225, 42);" type="reset" value="Reset">
                     </div>
                 </form>
             </div>

@@ -35,8 +35,12 @@ img
     padding:1px; 
     background:#ffffff; 
     border:1px solid rgba(208, 208, 208, 0);
+    background-color: transparent;
 }
-
+#menuPizza:hover
+{
+    transform: scale(2.5, 2.5);
+}
 a img
 {border-color:#A1B449;}
 
